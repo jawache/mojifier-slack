@@ -17,7 +17,11 @@ async function getEmotion(emoji) {
 
   const buffer = fs.readFileSync(trainEmojiFileName);
 
-  let response = await fetch(API_URL, {
+  const url =
+    API_URL +
+    "/detect?returnFaceId=false&returnFaceLandmarks=false&returnFaceAttributes=emotion";
+
+  let response = await fetch(url, {
     headers: {
       "Ocp-Apim-Subscription-Key": API_KEY,
       "Content-Type": "application/octet-stream"
@@ -34,7 +38,6 @@ async function getEmotion(emoji) {
 const EMOJIS_TO_TRAIN = [
   "☺️",
   "🤓",
-  "🦄",
   "😃",
   "😆",
   "😉",
@@ -62,6 +65,7 @@ async function main() {
   for (let emoji of EMOJIS_TO_TRAIN) {
     console.log(`Processing ${emoji}`);
     let emotion = await getEmotion(emoji);
+    // console.debug(emotion);
     let point = new EmotivePoint(emotion);
     let face = new Face(point, null);
     // console.log(`Existing emojis is ${face.mojiIcon}`);

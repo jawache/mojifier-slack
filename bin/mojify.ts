@@ -7,9 +7,6 @@ import { EmotivePoint, Face, Rect } from "../shared/models";
 import * as Jimp from "jimp";
 import * as path from "path";
 
-const API_URL = process.env["FACE_API_URL"];
-const API_KEY = process.env["FACE_API_KEY"];
-
 process.on("unhandledRejection", (reason, p) => {
   console.warn("Unhandled Rejection at: Promise", p, "reason:", reason);
 });
