@@ -3,10 +3,6 @@ require("dotenv").config();
 import fetch from "node-fetch";
 import { EmotivePoint, Face, Rect } from "../shared/models";
 
-// Part 2
-import * as Jimp from "jimp";
-import * as path from "path";
-
 process.on("unhandledRejection", (reason, p) => {
   console.warn("Unhandled Rejection at: Promise", p, "reason:", reason);
 });
